@@ -5,6 +5,7 @@ import Home from "../features/public/pages/Home";
 import About from "../features/public/pages/About";
 import Services from "../features/public/pages/Services";
 import NotFound from "../features/public/pages/NotFound";
+import Medicines from "../features/public/pages/Medicines";
 import { PATHS } from "./paths";
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: PATHS.SERVICES,
         element: <Services />,
+      },
+      {
+        path: PATHS.MEDICINES,
+        element: <Medicines />,
       },
     ],
   },

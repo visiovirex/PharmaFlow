@@ -3,7 +3,7 @@ import Container from "../../../components/ui/Container";
 
 function Hero() {
   return (
-    <section className="bg-gradient-to-r from-emerald-700 to-emerald-500 py-24 text-white">
+    <section className="bg-linear-to-r from-emerald-700 to-emerald-500 py-24 text-white">
       <Container>
         <div className="max-w-3xl">
           <span className="rounded-full bg-white/20 px-4 py-1 text-sm">
