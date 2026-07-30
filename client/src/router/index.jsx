@@ -6,6 +6,7 @@ import About from "../features/public/pages/About";
 import Services from "../features/public/pages/Services";
 import NotFound from "../features/public/pages/NotFound";
 import Medicines from "../features/public/pages/Medicines";
+import Categories from "../features/public/pages/Categories";
 import { PATHS } from "./paths";
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: PATHS.MEDICINES,
         element: <Medicines />,
+      },
+      {
+        path: PATHS.CATEGORIES,
+        element: <Categories />,
       },
     ],
   },
