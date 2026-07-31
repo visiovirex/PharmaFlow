@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  sendEmailVerification,
   signOut,
   getAuth,
   onAuthStateChanged,
@@ -49,6 +50,10 @@ function AuthProvider({ children }) {
     return sendPasswordResetEmail(auth, email);
   };
 
+  const verifyEmail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
+
   const authInfo = {
     auth,
     user,
@@ -60,6 +65,7 @@ function AuthProvider({ children }) {
     signInUser,
     logOut,
     resetPassword,
+    verifyEmail,
   };
 
   return (

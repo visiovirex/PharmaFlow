@@ -57,6 +57,12 @@ function Navbar() {
               Login
             </Link>
           )}
+
+          {user && (
+            <span className="text-sm text-slate-600">
+              {user.emailVerified ? "✅ Verified" : "⚠️ Not Verified"}
+            </span>
+          )}
         </div>
       </div>
     </nav>

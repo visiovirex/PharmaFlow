@@ -9,7 +9,7 @@ import Container from "../../../components/ui/Container";
 import { PATHS } from "../../../router/paths";
 
 function RegisterForm() {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, verifyEmail } = useContext(AuthContext);
 
   const handleRegister = (event) => {
     console.log("Register button clicked");
@@ -21,8 +21,11 @@ function RegisterForm() {
     const password = form.password.value;
 
     createUser(email, password)
-      .then(() => {
-        toast.success("Account created successfully!");
+      .then(async () => {
+        await verifyEmail();
+
+        toast.success("Account created. Please verify your email.");
+
         form.reset();
       })
       .catch((error) => {
