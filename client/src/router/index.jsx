@@ -7,6 +7,13 @@ import Services from "../features/public/pages/Services";
 import NotFound from "../features/public/pages/NotFound";
 import Medicines from "../features/public/pages/Medicines";
 import Categories from "../features/public/pages/Categories";
+import Offers from "../features/public/pages/Offers";
+import Contact from "../features/public/pages/Contact";
+import Login from "../features/public/pages/Login";
+import Register from "../features/public/pages/Register";
+import PrivateRoute from "../router/PrivateRoute";
+import Dashboard from "../features/dashboard/pages/Dashboard";
+import ForgotPassword from "../features/public/pages/ForgotPassword";
 import { PATHS } from "./paths";
 
 const router = createBrowserRouter([
@@ -34,6 +41,34 @@ const router = createBrowserRouter([
       {
         path: PATHS.CATEGORIES,
         element: <Categories />,
+      },
+      {
+        path: PATHS.OFFERS,
+        element: <Offers />,
+      },
+      {
+        path: PATHS.CONTACT,
+        element: <Contact />,
+      },
+      {
+        path: PATHS.LOGIN,
+        element: <Login />,
+      },
+      {
+        path: PATHS.REGISTER,
+        element: <Register />,
+      },
+      {
+        path: PATHS.DASHBOARD,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: PATHS.FORGOT_PASSWORD,
+        element: <ForgotPassword />,
       },
     ],
   },
