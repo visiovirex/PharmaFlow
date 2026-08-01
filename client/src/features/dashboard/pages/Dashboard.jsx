@@ -1,13 +1,16 @@
-function Dashboard() {
-  return (
-    <div className="mx-auto max-w-7xl px-4 py-20">
-      <h1 className="text-4xl font-bold">
-        Dashboard
-      </h1>
+import useUser from "../../../hooks/useUser";
 
-      <p className="mt-4 text-slate-600">
-        Welcome to PharmaFlow Dashboard.
-      </p>
+function Dashboard() {
+  const { dbUser, loading } = useUser();
+
+  if (loading) return <h1>Loading...</h1>;
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>{dbUser?.name}</p>
+      <p>{dbUser?.email}</p>
+      <p>{dbUser?.role}</p>
     </div>
   );
 }

@@ -6,10 +6,11 @@ import AuthContext from "../../../contexts/AuthContext";
 
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
+import axiosSecure from "../../../api/axiosSecure";
 import { PATHS } from "../../../router/paths";
 
 function RegisterForm() {
-  const { createUser, verifyEmail } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const handleRegister = (event) => {
     console.log("Register button clicked");
@@ -20,17 +21,19 @@ function RegisterForm() {
     const email = form.email.value;
     const password = form.password.value;
 
-    createUser(email, password)
-      .then(async () => {
-        await verifyEmail();
+    createUser(email, password).then(async () => {
+      const userInfo = {
+        name: `${form.firstName.value} ${form.lastName.value}`,
+        email,
+        role: "cashier",
+        createdAt: new Date(),
+      };
 
-        toast.success("Account created. Please verify your email.");
+      await axiosSecure.post("/users", userInfo);
 
-        form.reset();
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+      toast.success("Account created successfully!");
+      form.reset();
+    });
   };
 
   return (
@@ -49,6 +52,7 @@ function RegisterForm() {
                 <label className="mb-2 block font-medium">First Name</label>
 
                 <input
+                  name="firstName"
                   type="text"
                   placeholder="First Name"
                   className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-emerald-600"
@@ -59,6 +63,7 @@ function RegisterForm() {
                 <label className="mb-2 block font-medium">Last Name</label>
 
                 <input
+                  name="lastName"
                   type="text"
                   placeholder="Last Name"
                   className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-emerald-600"

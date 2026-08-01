@@ -6,6 +6,7 @@ import AuthContext from "../../../contexts/AuthContext";
 
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
+import axiosSecure from "../../../api/axiosSecure";
 import { PATHS } from "../../../router/paths";
 
 function LoginForm() {
@@ -26,7 +27,11 @@ function LoginForm() {
     const password = form.password.value;
 
     signInUser(email, password)
-      .then((result) => {
+      .then(async (result) => {
+        await axiosSecure.post("/jwt", {
+          email: result.user.email,
+        });
+
         toast.success(`Welcome ${result.user.email}`);
         form.reset();
 
