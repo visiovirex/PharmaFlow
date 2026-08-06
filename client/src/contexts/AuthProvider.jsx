@@ -40,8 +40,13 @@ function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const logOut = () => {
+  const logOutUser = async () => {
     setLoading(true);
+
+    await fetch("http://localhost:5000/logout", {
+      method: "POST",
+      credentials: "include",
+    });
 
     return signOut(auth);
   };
@@ -55,18 +60,18 @@ function AuthProvider({ children }) {
   };
 
   const authInfo = {
-    auth,
-    user,
-    role,
-    loading,
-    setUser,
-    setRole,
-    createUser,
-    signInUser,
-    logOut,
-    resetPassword,
-    verifyEmail,
-  };
+  auth,
+  user,
+  role,
+  loading,
+  setUser,
+  setRole,
+  createUser,
+  signInUser,
+  logOutUser,
+  resetPassword,
+  verifyEmail,
+};
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

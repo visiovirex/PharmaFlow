@@ -38,6 +38,9 @@ async function run() {
     const db = client.db("pharmaFlowDB");
 
     const usersCollection = db.collection("users");
+    const medicinesCollection = db.collection("medicines");
+    const customersCollection = db.collection("customers");
+    const suppliersCollection = db.collection("suppliers");
 
     app.post("/jwt", async (req, res) => {
       const user = req.body;
@@ -106,6 +109,20 @@ async function run() {
       });
 
       res.send(user);
+    });
+
+    app.get("/dashboard/stats", verifyToken, async (req, res) => {
+      const totalUsers = await usersCollection.countDocuments();
+      const totalMedicines = await medicinesCollection.countDocuments();
+      const totalCustomers = await customersCollection.countDocuments();
+      const totalSuppliers = await suppliersCollection.countDocuments();
+
+      res.send({
+        totalUsers,
+        totalMedicines,
+        totalCustomers,
+        totalSuppliers,
+      });
     });
 
     app.patch("/users/role/:id", verifyToken, async (req, res) => {

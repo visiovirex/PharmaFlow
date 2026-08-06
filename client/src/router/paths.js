@@ -1,4 +1,5 @@
 export const PATHS = {
+  // Public
   HOME: "/",
   ABOUT: "/about",
   SERVICES: "/services",
@@ -8,6 +9,20 @@ export const PATHS = {
   CONTACT: "/contact",
   LOGIN: "/login",
   REGISTER: "/register",
-  DASHBOARD: "/dashboard",
   FORGOT_PASSWORD: "/forgot-password",
+
+  // Dashboard
+  DASHBOARD: "/dashboard",
+  PROFILE: "/dashboard/profile",
+  SETTINGS: "/dashboard/settings",
+
+  // ERP Modules
+  DASHBOARD_MEDICINES: "/dashboard/medicines",
+  DASHBOARD_INVENTORY: "/dashboard/inventory",
+  DASHBOARD_PURCHASES: "/dashboard/purchases",
+  DASHBOARD_POS: "/dashboard/pos",
+  DASHBOARD_CUSTOMERS: "/dashboard/customers",
+  DASHBOARD_SUPPLIERS: "/dashboard/suppliers",
+  DASHBOARD_REPORTS: "/dashboard/reports",
+  DASHBOARD_USERS: "/dashboard/users",
 };
